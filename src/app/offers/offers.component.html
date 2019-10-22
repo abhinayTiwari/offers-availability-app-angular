@@ -2,3 +2,51 @@
 <div>Account Number*</div>
 <input type="text" required (keyup)="onAccountKeyUp($event)" />
 <button (click)="getAccountData($event)">Go</button>
+
+<mat-tab-group>
+    <mat-tab label="ACTIVE">
+        <table>
+            <tr *ngFor="let curOffer of activeOffers">
+                <td>{{curOffer.GameTheme}}</td>
+                <td>{{curOffer.expiredDateFormat}}</td>
+                <td>
+                    <img [src]="curOffer.gameImageUrl">
+                </td>
+            </tr>
+        </table>
+    </mat-tab>
+    <mat-tab label="COMPLETED">
+        <table>
+            <tr *ngFor="let curOffer of completedOffers">
+                <td>{{curOffer.GameTheme}}</td>
+                <td>{{curOffer.expiredDateFormat}}</td>
+                <td>
+                    <img [src]="curOffer.gameImageUrl">
+                </td>
+            </tr>
+        </table>
+    </mat-tab>
+    <mat-tab label="REDEEMED">
+        <table>
+            <tr *ngFor="let curOffer of redeemedOffers">
+                <td>{{curOffer.GameTheme}}</td>
+                <td>{{curOffer.expiredDateFormat}}</td>
+                <td>
+                    <img [src]="curOffer.gameImageUrl">
+                </td>
+            </tr>
+        </table>
+    </mat-tab>
+    <mat-tab label="EXPIRED">
+        <table>
+            <tr *ngFor="let curOffer of expiredOffers">
+                <td>{{curOffer.GameTheme}}</td>
+                <td>{{curOffer.expiredDateFormat}}</td>
+                <td>
+                    <img [src]="curOffer.gameImageUrl">
+                </td>
+            </tr>
+        </table>
+    </mat-tab>
+
+</mat-tab-group>

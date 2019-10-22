@@ -1,0 +1,13 @@
+@import "../../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+button {
+    margin: 10px;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container>* {
+    width: 100%;
+}

@@ -1,17 +1,27 @@
 <router-outlet></router-outlet>
-<form (submit)="loginUser($event)">
-  <span>Account Number</span>
-  <input
-    type="text"
-    id="account-number"
-    name="accountNumber"
-    placeholder="Account Number"
-    required
-  />
-  <br />
-  <span>Pin</span>
-  <input type="password" id="password" name="pin" placeholder="Pin" required />
-  <br />
-  <button type="submit">Login</button>
-  <button type="reset">Reset</button>
-</form>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Sign In</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form (submit)="loginUser($event)">
+            <span class="mat-title">Account Number</span>
+            <mat-form-field>
+                <input matInput maxlength="10" id="account-number" name="accountNumber" placeholder="Account Number" required />
+            </mat-form-field>
+            <br />
+            <span class="mat-title">Pin</span>
+            <mat-form-field>
+                <input matInput type=" password " id="password " name="pin " placeholder="Pin " required />
+            </mat-form-field>
+            <br />
+            <button type="submit " color="primary" mat-raised-button>Login</button>
+            <button type="reset " color="warn" mat-raised-button>Reset</button>
+        </form>
+
+    </mat-card-content>
+
+
+
+</mat-card>
