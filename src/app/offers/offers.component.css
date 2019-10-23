@@ -1,1 +1,33 @@
 @import "../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+button {
+    margin: 4px
+}
+
+#form-container .mat-divider,
+#account-number {
+    width: 334px;
+}
+
+tr.mat-header-row.ng-star-inserted {
+    background-color: #ffe2b9;
+}
+
+#offer-container .mat-table {
+    width: 100%;
+}
+
+td.odd-column,
+th.odd-column {
+    display: table-cell;
+}
+
+@media (max-width: 640px) {
+    td.odd-column,
+    th.odd-column {
+        display: none;
+    }
+}
+
+#main-container {
+    background-color: #8080801c;
+}

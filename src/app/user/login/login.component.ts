@@ -8,6 +8,13 @@ import { AuthService } from "../../auth.service";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  accountNumber:number;
+  
+  onAccountKeyUp(event: any) {
+    this.accountNumber = event.target.value;
+    console.log(this.accountNumber)
+  }
+
   constructor(private Auth: AuthService) {}
 
   ngOnInit() {}

@@ -22,7 +22,12 @@ export class OffersComponent implements OnInit {
     this.accountNumber = event.target.value;
   }
   convertToNormalDateFormat(dateString: string) {
-    return new Date(dateString).toString().slice(0, 15);
+    const date:Date = new Date(dateString);
+    const timezoneOffeset:number = date.getTimezoneOffset();
+    const localDate:Date = new Date(date.getTime() + timezoneOffeset *60*1000);
+    const hours:number = localDate.getHours() %12 ? localDate.getHours()%12 : 12;
+
+    return `${localDate.toString().slice(0, 15)} ${hours}:${localDate.getMinutes()} ${localDate.getHours() > 12? "PM": "AM"}`;
   }
 
   getAccountData(event: any) {
@@ -38,15 +43,11 @@ export class OffersComponent implements OnInit {
             .join("-")}.png`,
           expiredDateFormat: this.convertToNormalDateFormat(cur.ExpirationDate)
         }));
-        const curDate = new Date().getTime();
-        this.expiredOffers = offers.filter(
-          cur => new Date(cur.ExpirationDate).getTime() < curDate
-        );
-        this.activeOffers = offers.filter(
-          cur => new Date(cur.ExpirationDate).getTime() > curDate
-        );
-        this.redeemedOffers = offers.filter(cur => cur.IsPrizeRedeemed);
-        this.completedOffers = offers.filter(cur => cur.IsGamePlayed);
+
+        this.activeOffers = offers.filter(offer => offer.StatusID === 5 && !offer.IsGamePlayed && !offer.IsPrizeRedeemed);
+        this.completedOffers = offers.filter(offer => offer.IsGamePlayed && !offer.IsPrizeRedeemed);
+        this.expiredOffers = offers.filter(offer => offer.StatusID !== 5 && !offer.IsGamePlayed && !offer.IsPrizeRedeemed);
+        this.redeemedOffers = offers.filter(offer => offer.IsPrizeRedeemed);
       });
   }
 }

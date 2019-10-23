@@ -3,11 +3,13 @@ button {
     margin: 10px;
 }
 
-.example-container {
-    display: flex;
-    flex-direction: column;
+input {
+    border: none;
+    height: 42px;
+    width: 100%;
+    font-size: 20px;
 }
 
-.example-container>* {
-    width: 100%;
+input:focus {
+    outline: none;
 }
