@@ -1,35 +1,24 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Sign In</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <!-- <mat-card> -->
-    <form (submit)="loginUser($event)">
-      <div class="mat-title">Account Number :</div>
-      <input
-        type="text"
-        matInput
-        id="account-number"
-        placeholder="type here..."
-      />
-      <mat-divider></mat-divider>
-      <br />
-      <br /><br />
+<mat-card id="login-container">
+    <mat-card-header>
+        <mat-card-title class="title">Sign In</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <!-- <mat-card> -->
+        <form (submit)="loginUser($event)">
+            <div class="mat-title">Account Number :</div>
+            <input type="text" matInput id="account-number" placeholder="type here..." />
+            <mat-divider></mat-divider>
+            <br />
+            <br /><br />
 
-      <div class="mat-title">Pin :</div>
-      <br />
-      <input
-        matInput
-        type="password"
-        id="password"
-        required
-        placeholder="type here..."
-      />
-      <mat-divider></mat-divider>
+            <div class="mat-title">Pin :</div>
+            <br />
+            <input matInput type="password" id="password" required placeholder="type here..." />
+            <mat-divider></mat-divider>
 
-      <button type="submit " color="primary" mat-raised-button>Login</button>
-      <button type="reset " color="warn" mat-raised-button>Reset</button>
-    </form>
-    <!-- </mat-card> -->
-  </mat-card-content>
+            <button type="submit " color="primary" mat-raised-button>Login</button>
+            <button type="reset " color="warn" mat-raised-button>Reset</button>
+        </form>
+        <!-- </mat-card> -->
+    </mat-card-content>
 </mat-card>

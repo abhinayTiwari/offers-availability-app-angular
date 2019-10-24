@@ -1,6 +1,6 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "./auth.service";
 
 @Component({
   selector: "app-home",
@@ -8,7 +8,12 @@ import { AuthService } from "./auth.service";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit() {}
+
+  logout(event){
+    console.log("logging out");
+    this.auth.logout();
+  }
 }

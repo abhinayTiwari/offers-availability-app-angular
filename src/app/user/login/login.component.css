@@ -13,3 +13,15 @@ input {
 input:focus {
     outline: none;
 }
+
+#login-container {
+    margin: auto;
+    width: 400px;
+    margin-top: 15%;
+}
+
+.title {
+    text-decoration: underline;
+    position: relative;
+    left: 141px;
+}

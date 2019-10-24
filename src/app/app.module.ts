@@ -3,7 +3,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
-import { OfferComponent } from "./offer/offer.component";
 import { LoginComponent } from "./user/login/login.component";
 import { OffersComponent } from "./offers/offers.component";
 import { RouterModule, Routes } from "@angular/router";
@@ -26,13 +25,12 @@ const appRoutes: Routes = [
     children: [{ path: "", component: LoginComponent }]
   },
 
-  { path: "", redirectTo: "/login", pathMatch: "full" }
+  { path: "", redirectTo: "/home", pathMatch: "full" }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    OfferComponent,
     LoginComponent,
     OffersComponent,
     UserComponent,
