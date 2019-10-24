@@ -15,11 +15,21 @@ export class AuthService {
       )
       .subscribe((data: any[]) => {
         if (data.Offers.length > 0) {
+          localStorage.setItem("token", "secretKey");
           this.router.navigate(["/home"]);
         } else {
           alert("Account Number not found!!");
           this.router.navigate(["/login"]);
         }
       });
+  }
+
+  logout() {
+    localStorage.removeItem("token");
+    this.router.navigate(["/login"]);
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem("token");
   }
 }

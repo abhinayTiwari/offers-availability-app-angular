@@ -22,12 +22,19 @@ export class OffersComponent implements OnInit {
     this.accountNumber = event.target.value;
   }
   convertToNormalDateFormat(dateString: string) {
-    const date:Date = new Date(dateString);
-    const timezoneOffeset:number = date.getTimezoneOffset();
-    const localDate:Date = new Date(date.getTime() + timezoneOffeset *60*1000);
-    const hours:number = localDate.getHours() %12 ? localDate.getHours()%12 : 12;
+    const date: Date = new Date(dateString);
+    const timezoneOffeset: number = date.getTimezoneOffset();
+    const localDate: Date = new Date(
+      date.getTime() + timezoneOffeset * 60 * 1000
+    );
+    const hours: number =
+      localDate.getHours() % 12 ? localDate.getHours() % 12 : 12;
 
-    return `${localDate.toString().slice(0, 15)} ${hours}:${localDate.getMinutes()} ${localDate.getHours() > 12? "PM": "AM"}`;
+    return `${localDate
+      .toString()
+      .slice(0, 15)} ${hours}:${localDate.getMinutes()} ${
+      localDate.getHours() > 12 ? "PM" : "AM"
+    }`;
   }
 
   getAccountData(event: any) {
@@ -44,9 +51,21 @@ export class OffersComponent implements OnInit {
           expiredDateFormat: this.convertToNormalDateFormat(cur.ExpirationDate)
         }));
 
-        this.activeOffers = offers.filter(offer => offer.StatusID === 5 && !offer.IsGamePlayed && !offer.IsPrizeRedeemed);
-        this.completedOffers = offers.filter(offer => offer.IsGamePlayed && !offer.IsPrizeRedeemed);
-        this.expiredOffers = offers.filter(offer => offer.StatusID !== 5 && !offer.IsGamePlayed && !offer.IsPrizeRedeemed);
+        this.activeOffers = offers.filter(
+          offer =>
+            offer.StatusID === 5 &&
+            !offer.IsGamePlayed &&
+            !offer.IsPrizeRedeemed
+        );
+        this.completedOffers = offers.filter(
+          offer => offer.IsGamePlayed && !offer.IsPrizeRedeemed
+        );
+        this.expiredOffers = offers.filter(
+          offer =>
+            offer.StatusID !== 5 &&
+            !offer.IsGamePlayed &&
+            !offer.IsPrizeRedeemed
+        );
         this.redeemedOffers = offers.filter(offer => offer.IsPrizeRedeemed);
       });
   }
