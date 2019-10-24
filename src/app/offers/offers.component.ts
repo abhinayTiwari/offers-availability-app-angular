@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: "app-offers",
@@ -13,6 +14,9 @@ export class OffersComponent implements OnInit {
   activeOffers: any[] = [];
   completedOffers: any[] = [];
   redeemedOffers: any[] = [];
+
+
+  pageEvent: PageEvent;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -68,5 +72,9 @@ export class OffersComponent implements OnInit {
         );
         this.redeemedOffers = offers.filter(offer => offer.IsPrizeRedeemed);
       });
+  }
+
+  getTotalPageNumber(length){
+    return Math.ceil(length/5)
   }
 }

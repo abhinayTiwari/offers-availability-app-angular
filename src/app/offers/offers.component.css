@@ -3,6 +3,12 @@ button {
     margin: 4px
 }
 
+input {
+    outline: none;
+    border: none;
+    font-size: 15px;
+}
+
 #form-container .mat-divider,
 #account-number {
     width: 334px;
@@ -14,6 +20,7 @@ tr.mat-header-row.ng-star-inserted {
 
 #offer-container .mat-table {
     width: 100%;
+    border: 1px solid #e2e2e2;
 }
 
 td.odd-column,

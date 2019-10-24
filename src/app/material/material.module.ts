@@ -10,7 +10,7 @@ import {
   MatIconModule,
   MatTableModule,
   MatPaginatorModule,
-  MatDividerModule,
+  MatDividerModule
 
 } from "@angular/material";
 

@@ -1,10 +1,9 @@
 <mat-card id="main-container">
     <mat-card id="form-container">
         <div class="mat-title">Account Number*</div>
-        <input type="text" matInput required (keyup)="onAccountKeyUp($event)" id="account-number" placeholder="Please enter your Account Number here.." />
+        <input matInput required (keyup)="onAccountKeyUp($event)" id="account-number" placeholder="Please enter your Account Number here.." />
         <mat-divider></mat-divider>
         <button color="primary" mat-raised-button (click)="getAccountData($event)">Go</button>
-
     </mat-card>
 
 
@@ -27,7 +26,8 @@
                     </ng-container>
 
                     <ng-container matColumnDef="clickToView">
-                        <th mat-header-cell *matHeaderCellDef class="even-column">Click to view details</th>
+                        <th mat-header-cell *matHeaderCellDef class="even-column">Click to view details &#x2193;
+                        </th>
                         <td mat-cell *matCellDef="let curOffer" class="even-column">
                             <img [src]="curOffer.gameImageUrl" />
                         </td>
@@ -37,7 +37,9 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                <mat-paginator [length]="getTotalPageNumber(activeOffers.length)" [pageSize]="5" [pageSizeOptions]="[5]" (page)="pageEvent = $event">
+                </mat-paginator>
+
             </mat-tab>
             <mat-tab label="COMPLETED">
                 <mat-divider></mat-divider>
@@ -55,7 +57,7 @@
                     </ng-container>
 
                     <ng-container matColumnDef="clickToView">
-                        <th mat-header-cell *matHeaderCellDef class="even-column">Click to view details</th>
+                        <th mat-header-cell *matHeaderCellDef class="even-column">Click to view details &#x2193;</th>
                         <td mat-cell *matCellDef="let curOffer" class="even-column">
                             <img [src]="curOffer.gameImageUrl" />
                         </td>
@@ -65,7 +67,8 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                <mat-paginator [length]="getTotalPageNumber(completedOffers.length)" [pageSize]="5" [pageSizeOptions]="[5]" (page)="pageEvent = $event">
+                </mat-paginator>
             </mat-tab>
             <mat-tab label="REDEEMED">
                 <mat-divider></mat-divider>
@@ -84,7 +87,7 @@
                     </ng-container>
 
                     <ng-container matColumnDef="clickToView">
-                        <th mat-header-cell *matHeaderCellDef class="even-column">Click to view details</th>
+                        <th mat-header-cell *matHeaderCellDef class="even-column">Click to view details &#x2193;</th>
                         <td mat-cell *matCellDef="let curOffer" class="even-column">
                             <img [src]="curOffer.gameImageUrl" />
                         </td>
@@ -94,7 +97,8 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                <mat-paginator [length]="getTotalPageNumber(redeemedOffers.length)" [pageSize]="5" [pageSizeOptions]="[5]" (page)="pageEvent = $event">
+                </mat-paginator>
             </mat-tab>
             <mat-tab label="EXPIRED">
                 <mat-divider></mat-divider>
@@ -113,7 +117,7 @@
                         </ng-container>
 
                         <ng-container matColumnDef="clickToView">
-                            <th mat-header-cell *matHeaderCellDef class="even-column">Click to view details</th>
+                            <th mat-header-cell *matHeaderCellDef class="even-column">Click to view details &#x2193;</th>
                             <td mat-cell *matCellDef="let curOffer" class="even-column">
                                 <img [src]="curOffer.gameImageUrl" />
                             </td>
@@ -122,8 +126,7 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
                     </table>
-
-                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                    <mat-paginator [length]="getTotalPageNumber(expiredOffers.length)" [pageSize]="5" [pageSizeOptions]="[5]" (page)="pageEvent = $event"></mat-paginator>
                 </div>
             </mat-tab>
         </mat-tab-group>
